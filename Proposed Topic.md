@@ -9,7 +9,7 @@ Robots, different from animal creatures, do not own physiological traits regardi
 - Is the subordination and serviceability of “female” assistant robots a reflection of male-gazing dominance?
 - Which is the trend of future robot designs — gendering or non-gendering?
 ### Resources and links
-- Donna Haraway， Cyborg Manifesto, In Simians, Cyborgs, and Women: The Reinvention of Nature 1st Edition
+- Donna Haraway, Cyborg Manifesto, In Simians, Cyborgs, and Women: The Reinvention of Nature 1st Edition
 - [Can Feminist Robots Challenge Our Biases? ]( https://spectrum.ieee.org/human-robot-interaction#toggle-gdpr) 
 - [Principles of Gender-Specific Medicine (Third Edition), Gender in the Genomic Era, 2017, Pages 695-703. (Chapter 47 - Robots and Gender)]( https://www.sciencedirect.com/science/article/pii/B9780128035061000425)   
 - [When stereotypes meet robots: The double-edge sword of robot gender and personality in human–robot interaction]( https://www.sciencedirect.com/science/article/pii/S0747563214002921)
