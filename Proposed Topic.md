@@ -16,3 +16,4 @@ Robots, different from animal creatures, do not own physiological traits regardi
 - [The Problem of Lady Robots: Feminist Theory Part 1 | The Whole Plate: Episode](https://www.youtube.com/watch?v=uMfV7S5hfUo)
 - Norbert Wiener, The Human Use of Human Beings
 - [Robot social presence and gender: do females view robots differently than males?]( https://dl.acm.org/doi/abs/10.1145/1349822.1349857) 
+- [Do Large Language Models Understand Us?]( https://medium.com/@blaisea/do-large-language-models-understand-us-6f881d6d8e75) 
