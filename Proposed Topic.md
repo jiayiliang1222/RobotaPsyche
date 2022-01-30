@@ -13,6 +13,6 @@ Robots, different from animal creatures, do not own physiological traits regardi
 - [Can Feminist Robots Challenge Our Biases? ]( https://spectrum.ieee.org/human-robot-interaction#toggle-gdpr) 
 - [Principles of Gender-Specific Medicine (Third Edition), Gender in the Genomic Era, 2017, Pages 695-703. (Chapter 47 - Robots and Gender)]( https://www.sciencedirect.com/science/article/pii/B9780128035061000425)   
 - When stereotypes meet robots: The double-edge sword of robot gender and personality in human–robot interaction https://www.sciencedirect.com/science/article/pii/S0747563214002921
-- The Problem of Lady Robots: Feminist Theory Part 1 | The Whole Plate: Episode https://www.youtube.com/watch?v=uMfV7S5hfUo
+- [The Problem of Lady Robots: Feminist Theory Part 1 | The Whole Plate: Episode](https://www.youtube.com/watch?v=uMfV7S5hfUo)
 - Norbert Wiener, The Human Use of Human Beings
 - [Robot social presence and gender: do females view robots differently than males?]( https://dl.acm.org/doi/abs/10.1145/1349822.1349857) 
