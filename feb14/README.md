@@ -7,4 +7,6 @@ I put three main creatures in my pond, which are frogs, tadpoles, and the algae.
   - The hunger level of each tadpoles determines how fast the tadpoles move. More hungry the tadpole is, the faster it moves.
   - I try to make use of the concept of particles to build a lifespan for each tadpole, but due to my lack of experience in managing the boolean statement, I fail to accomplish this goal. This is what I could improve for this project in the future.
 ## Screenshots
-  
+<img src="Screenshot1.png" width="400">
+<img src="Screenshot2.png" width="400">
+<img src="Screenshot3.png" width="400">
