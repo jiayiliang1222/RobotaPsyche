@@ -19,5 +19,5 @@ I put three main creatures in my pond, which are frogs, tadpoles, and the algae.
   - Another problem is to make two groups of tadpoles with different colors. To solve this problem, I add a value called myColor in Tadpole(float _mass_, int myColor) of the class function. I set the black color to be 1, and the gray color to be 2. When I initialize the Tadpole class in setup(), I just create two groups with new Tadpole() with different myColor.
   - As is mentioned, the lack of acknowledgement of the boolean statement makes me fail to create a lifespan for each tadpole.
   - Now I successfully enable the tadpoles to be attracted by the frogs. However, it is hard to realize the effect that the tadpoles follow and move at the backward of the forgs. It is often to see tadpoles surpass the frogs.
-  ## Clever things I learned
+  ## Clever Things I Learned
   During building my ecology, although I try to build a very organized ecosystem that you can see the tadpoles move clearly after the frogs, the result seems to be a bit of "chaos". However, it is good in some way since it  makes the ecosystem even more similar to the situations in reality. It is inspiring for me to explore the balance between order and chaos while doing this project.
