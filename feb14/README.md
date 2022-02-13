@@ -5,4 +5,6 @@ I put three main creatures in my pond, which are frogs, tadpoles, and the algae.
   - Algae is the food source which also attracts the small tadpoles that need food to grow. I make the mass of the algae so much larger than the frog to make the attractiveness of food higher than the frog. 
   - There are two groups of tadpoles with different colors. Each group follows one frog, and they are all work as predators that are attracted by the algae in the middle of the pond. The tadpoles will repel the tadpoles with different colors. 
   - The hunger level of each tadpoles determines how fast the tadpoles move. More hungry the tadpole is, the faster it moves.
-  - I try to make use of the concept of particles to build a lifespan for each tadpole, but due to my lack of experience in managing the boolean statement, I fail to accomplish this goal. This is what I could improve for this project in the future. 
+  - I try to make use of the concept of particles to build a lifespan for each tadpole, but due to my lack of experience in managing the boolean statement, I fail to accomplish this goal. This is what I could improve for this project in the future.
+## Screenshots
+  
