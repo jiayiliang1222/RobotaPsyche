@@ -4,4 +4,3 @@ This change is made to imitate the process of a frog bearing tadpoles. I realize
 I try to set up the lifespan and let the tadpoles disappear after a certain period of time. However, I fail to give out a workable boonlean statement to judge whether the tadpoles die, which is what I will work on for the future progress.
 - Here is the picture:
 <img src="Screenshot01.png" width="400">
-  [Link to video](https://youtu.be/V4nKdK6XWYc)
