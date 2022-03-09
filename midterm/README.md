@@ -1,5 +1,5 @@
-## Concept
-- This project is a continuation on my previous production assignment —— ecosystem. The pond is mainly consisted of 5 elements — the frogs, the tadpoles, the food (algae), the light source, and little frogs. The ecosystem is designed to imitate real-life ecosystem where frogs give birth to tadpoles and tadpoles grow into frogs. 
+## Concept and Description
+- This project is a continuation on my previous production assignment —— frog pond. The pond is mainly consisted of 5 elements — the frogs, the tadpoles, the food (algae), the light source, and little frogs. The ecosystem is designed to imitate real-life ecosystem where frogs give birth to tadpoles and tadpoles grow into frogs. 
 - The ecosystem mainly follows the several rules:
   - Frogs bear tadpoles while they are swimming
   - Tadpoles Frogs bear tadpoles while they are swimming
@@ -12,3 +12,16 @@
 ## Presentation
 https://docs.google.com/presentation/d/1LlXn905VM9M5R8NAWXXgSRiiFyjSZy4tYqDzEGHQdfE/edit#slide=id.p
 ## Screenshots and Video
+
+
+
+## How I make it
+
+
+## Problems
+
+## Interesting Discorvery
+
+
+
+## Inspiration Source
