@@ -12,9 +12,13 @@
 ## Presentation
 https://docs.google.com/presentation/d/1LlXn905VM9M5R8NAWXXgSRiiFyjSZy4tYqDzEGHQdfE/edit#slide=id.p
 ## Screenshots and Video
+<img src="Screenshot001.png" width="400">
+<img src="Screenshot002.png" width="400">
+<img src="Screenshot003.png" width="400">
+<img src="Screenshot004.png" width="400">
 
-
-
+  [Link to video](https://youtu.be/vY3TUtTx1HQ)
+  
 ## How I make it
 
 
