@@ -1,62 +1,125 @@
-//Frog leads the tadpoles
+//Robota Psyche  Spring 2022 Midterm Project
+//Ecosystem: Frog and Tadpole Pond
+//Description: Tadpoles seek frogs, and are attracted by algae(food). You can control the light using mouse and turn the mature tadpoles into little frogs.
+//By Jiayi Liang
+//2022.3.8
+
+
+//Frog
 Frog a;
 Frog b;
-//Predator
+
+//Light
+Light c;
+
+//Tadpole
 ArrayList<Tadpole> tadpoles1 = new ArrayList<Tadpole>();
 ArrayList<Tadpole> tadpoles2 = new ArrayList<Tadpole>();
+
+//Little Frog
+ArrayList<LilFrog> lilfrogs = new ArrayList<LilFrog>();
+
 //Food
-Algae j;
+Algae[]algae = new Algae[6];
+
+//little frog and mature tadpole count
+int countlfrog;
+int countmtadpole;
 
 void setup() {
   size(1600,800);
-//create 100 black tadpoles and 100 gray tadpoles
-   
-
-  
-  
-  //create 2 frogs
-  a = new Frog (random(width),random(height),0.03,0.03);
+  countlfrog = 0;
+  countmtadpole= 0;
+  //create 2 frogs, 1 light, and 6 algaes
+  a = new Frog (random(width),random(height),0.06,0.06);
   b = new Frog (random(width),random(height),-0.035,0.05);
-  
-  j = new Algae();
+  c = new Light (mouseX,mouseY);
+  for (int i = 0; i < algae.length; i++) {
+  algae [i] = new Algae(random(1600),random(800),random(1000,2000));      
+  }
 }
 
 void draw() {
-  background(154, 236, 255);
+  background(154, 236, 255); 
+ 
+ //record the mouse location to make the light move with the mouse
+  PVector mouse = new PVector (mouseX,mouseY);
+  c.display();
 
+  //Create first group of tadpoles
  for (int i = 0; i < tadpoles1.size(); i++) {
-   PVector aForce = a.attract(tadpoles1.get(i));
-   PVector aforce = j.attract(tadpoles1.get(i));
-   tadpoles1.get(i).applyForce(aForce);
-   tadpoles1.get(i).applyForce(aforce);
-   tadpoles1.get(i).update();
-   tadpoles1.get(i).display();
-      tadpoles1.get(i).live();
-   
-       for (int j = 0; j < tadpoles2.size(); j++) {
-      if (i != j) {
-        PVector force = tadpoles2.get(i).attract(tadpoles1.get(i));
-        tadpoles1.get(i).applyForce(force);
-      }
-      }
-  }
+   Tadpole t = tadpoles1.get(i);
+   PVector arriveForce = t.arrive(a.location);
+   t.applyForce(arriveForce);
+ for (int j = 0; j < algae.length; j++) {
+      PVector aforce =algae[j].attract(t);
+   t.applyForce(aforce);
+     }
+   t.update();
+   t.display();
+   t.live();
+   t.separate();
+   t.eat();
   
-   for (int i = 0; i < tadpoles2.size(); i++) {
-   PVector bForce = b.attract(tadpoles2.get(i));
-   PVector bforce = j.attract(tadpoles2.get(i));
-   tadpoles2.get(i).applyForce(bforce);
-   tadpoles2.get(i).applyForce(bForce);
-   tadpoles2.get(i).update();
-   tadpoles2.get(i).display();
-   tadpoles2.get(i).live();
-      for (int j = 0; j < tadpoles1.size(); j++) {
-      if (i != j) {
-        PVector force = tadpoles1.get(i).attract(tadpoles2.get(i));
-        tadpoles2.get(i).applyForce(force);
+  //if tadpoles doesn't eat enough food, they die. If they eat enough food and get the light, they grow into little frogs.
+  if(t.lifespan<0)
+      {
+        if(t.growLevel<3){
+        tadpoles1.remove(i);      
+      }
+        if (t.growLevel>10){
+          countmtadpole = 1;
+         if( PVector.dist(mouse,t.location)<100){
+          tadpoles1.remove(i);
+          lilfrogs.add(new LilFrog(mouseX,mouseY, random(-0.05,0.05),random(-0.05,0.05)));
+          countlfrog++;
       }
     }
+   }
+ }
+ 
+   for(int i = 0;i<lilfrogs.size();i++){   
+    lilfrogs.get(i).display(); 
+    lilfrogs.get(i).update(); 
+    lilfrogs.get(i).checkEdges(); 
   }
   
+ //Create second group of tadpoles
+   for (int i = 0; i < tadpoles2.size(); i++) {
+   Tadpole t2 = tadpoles2.get(i);
+     PVector arriveForce2 = t2.arrive(b.location);
+     t2.applyForce(arriveForce2);
+ for (int j = 0; j < algae.length; j++) {
+   PVector bforce = algae[j].attract(t2);
+   t2.applyForce(bforce);
+ }
+
+   t2.update();
+   t2.display();
+   t2.live();
+   t2.separate();
+   t2.eat();
+      
+        if(t2.lifespan<0)
+      {
+        if(t2.growLevel<3){
+        tadpoles2.remove(i);      
+      }
+      if (t2.growLevel>10){
+        countmtadpole =1;
+         if( PVector.dist(mouse,t2.location)<100){
+          tadpoles2.remove(i);
+          lilfrogs.add(new LilFrog(mouseX,mouseY, random(-0.05,0.05),random(-0.05,0.05)));
+         countlfrog++;
+      }
+  }
+}
+}   
+ for (int j = 0; j < algae.length; j++) {
+ algae[j].display();
+ 
+ }
+
   a.display();
   a.update();
   a.checkEdges();
@@ -64,29 +127,44 @@ void draw() {
   b.display();
   b.update();
   b.checkEdges();
+ 
+  tadpoles1.add( new Tadpole(a.location.x,a.location.y,random(10,25),1));
+  tadpoles2.add( new Tadpole(b.location.x,b.location.y,random(10,25),0));
   
-  j.display();
   
-       tadpoles1.add( new Tadpole(a.location.x,a.location.y,random(10,25),1));
-       tadpoles2.add( new Tadpole(b.location.x,b.location.y,random(10,25),0));
+  
+ //Legend
+
+  textAlign(LEFT);
+  textSize(30);
+  text("Welcome to the Frog Pond!",50,50);
+  text("Little Frog Number:",50,150);
+  if (countmtadpole == 0){
+  text("There isn't any mature tadpole.",50,100);
+  }else{ 
+    text("There are mature tadpoles!",50,100);  
+  }
+  text(countlfrog, 300 ,150);
+ 
 }
 
 class Algae{
-  float mass;
+
   PVector location;
   float G;
+  float mass;
 
-  Algae() {
-    location = new PVector(width/2, height/2);
-    mass =50;
-    G = 0.4;
+  Algae(float x, float y,float mass_) {
+    location = new PVector(x, y);
+    G = 0.9;
+    mass=mass_;
   }
 
 //Algae(food) attracts the tadpoles
   PVector attract(Tadpole m) {
-    PVector force = PVector.sub(location, m.location);
-    float distance = force.mag();
-    distance = constrain(distance, 5.0, 25.0);
+  PVector force = PVector.sub(location, m.location);
+  float distance = force.mag();
+    distance = constrain(distance, 20.0, 100.0);
 
     force.normalize();
     float strength = (G * mass * m.mass) / (distance * distance);
@@ -97,11 +175,8 @@ class Algae{
   void display() {
     noStroke();
     fill(85,180,180);
-    ellipse(location.x, location.y, mass*2, mass*2);
-  }  
-  
- 
-  
+    ellipse(location.x, location.y, mass*0.15, mass*0.15);
+  }      
 }
 
 
@@ -121,18 +196,6 @@ class Frog{
   G = 0.4;
  }
  
- //Frog attracts the tadpoles as well
-  PVector attract(Tadpole m) {
-    PVector force = PVector.sub(location, m.location);
-    float distance = force.mag();
-
-    distance = constrain(distance,5.0, 15.0);
-
-    force.normalize();
-    float strength = (G * mass * m.mass) / (distance * distance);
-    force.mult(strength);
-    return force;
-  }
   
  void display() {
     noStroke();
@@ -152,31 +215,37 @@ class Frog{
   void update(){
    velocity.add(acceleration);
    location.add(velocity);
-    if (abs(velocity.x)>3){
+    if (abs(velocity.x)>6){
     velocity.mult(0);
    }
   }
   
-  //Frog changes directions when reaching the edges
+  //Frog changes directions when it feels it is close to the edge
  void checkEdges(){
-    if (location.x > width) {
-      location.x = width;
+    if (location.x > width-100) {
+      location.x = width-100;
       velocity.x *= -1;
       acceleration.x *= -1;
-    } else if (location.x < 0) {
-      location.x = 0;
+      velocity.y *= -1;
+      acceleration.y *= -1;
+
+    } else if (location.x <100) {
+      location.x = 100;
       velocity.x *= -1;
       acceleration.x *= -1;
+
     }
 
-    if (location.y > height) {
-      location.y = height;
+    if (location.y > height-100) {
+      location.y = height- 100;
       velocity.y *= -1;
       acceleration.y *= -1;
-    } else if (location.y < 0) {
-      location.y = 0;
+  
+    } else if (location.y < 100) {
+      location.y =100;
       velocity.y *= -1;
       acceleration.y *= -1;
+
     }
   }
 }
@@ -195,10 +264,16 @@ class Tadpole{
   int Color;
   float hunger;
   float lifespan=50;
-float x;
-float y;
+  float x;
+  float y;
+  float scale = 1;
+  float growLevel=1;
+  float maxspeed= 10;
+  float maxforce =10;
 
 
+  
+  
   Tadpole(float x,float y,float _mass_, int myColor) {
     location = new PVector(x,y);
     velocity = new PVector(0,0);
@@ -212,26 +287,9 @@ float y;
   //Newton's second law
   void applyForce(PVector force){
    PVector f = PVector.div(force,mass);
-   acceleration.add(f);
-    
+   acceleration.add(f);   
   }
 
-//Tadpoles repel other tadpoles with different color
-   PVector attract(Tadpole m) {
-
-    PVector force = PVector.sub(location, m.location);
-    float distance = force.mag();
-    distance = constrain(distance, 65.0,85.0);
-    force.normalize();
-
-    float strength = (G * mass * m.mass) / (distance * distance);
-    force.mult(strength);
-
-  if (Color != m.Color){
-  force.mult (-0.1);
-  }
-   return force;
-  }
 
 //Hunger makes the acceleration speed varies
   void update() {
@@ -251,21 +309,190 @@ float y;
     pushMatrix();
     translate(location.x, location.y);
     rotate(velocity.heading());
+    scale(scale);
     triangle(0, 5, 0, -5, 20, 0);
     popMatrix();
   }
   
+  //the lifespan decreases with time
   void live(){
-   lifespan = lifespan -0.01;
+   lifespan = lifespan -0.5;
   }
 
-  Boolean isDead(){
-    if(lifespan < 0.0){
-      return true;
-    }else{
-      return false;
-    }
+
+//frog eats the algae when coming close
+  void eat(){
+ for (int j = 0; j < algae.length;j++) {
+    float distance = PVector.dist(location,algae[j].location);
+          if (distance<algae[j].mass*0.15 ){
+            growLevel =growLevel +0.01; 
+            if(scale<2){
+            scale = scale  +0.01;
+            }
+
   }
+ 
+  }
+  }
+
+
+//the tadpoles arrive at the frog when seeking 
+void seek(PVector target) {
+    PVector desired = PVector.sub(target, location);
+    desired.normalize();
+    desired.mult(maxspeed);
+    PVector steer = PVector.sub(desired, velocity);
+    steer.limit(maxforce);
+    applyForce(steer);
+  }
+
+  PVector arrive(PVector target) {
+    PVector desired = PVector.sub(target, location);
+    float d = desired.mag();
+    desired.normalize();
+
+    if (d < 1) {
+      float m = map(d, 0, 10, 0, maxspeed);
+      desired.mult(m);
+    } else {
+      desired.mult(maxspeed);
+    }
+
+    PVector steer = PVector.sub(desired, velocity);
+    steer.limit(maxforce);
+    return(steer);
+  }
+
+//tadpoles swims away from neighbour tadpoles when coming too close
+void separate () {
+    float desiredseparation = 20;
+    int count = 0;
+    PVector sum = new PVector(0, 0);
+
+    for (Tadpole other : tadpoles1) {
+      float d = PVector.dist(location, other.location);
+
+      if ((d > 0) && (d < desiredseparation)) {
+
+        PVector diff = PVector.sub(location, other.location); 
+
+        diff.normalize(); 
+
+        sum.add(diff); 
+        count++;
+      }
+    }
 
  
+    if (count > 0) {
+      sum.div(count);
+      sum.setMag(maxspeed);
+
+ 
+      PVector steer = PVector.sub(sum, velocity);
+      steer.limit(maxforce);
+      applyForce(steer);
+    }
+ 
+        for (Tadpole other : tadpoles2) {
+
+      float d = PVector.dist(location, other.location);
+      if ((d > 0) && (d < desiredseparation)) {
+        PVector diff = PVector.sub(location, other.location); 
+        diff.normalize(); 
+        sum.add(diff); 
+        count++;
+      }
+    }
+    if (count > 0) { 
+      sum.div(count);
+      sum.setMag(maxspeed);
+      PVector steer2 = PVector.sub(sum, velocity);
+      steer2.limit(maxforce);
+      applyForce(steer2);
+    }
+  }
+}
+
+
+class LilFrog{
+ PVector velocity;
+ PVector acceleration;
+ PVector location;
+ 
+ LilFrog(float x,float y,float aX, float aY){
+  velocity = new PVector(0,0);
+  location = new PVector (x,y); 
+  acceleration = new PVector (aX,aY);
+
+ }
+
+
+ void display() {
+    noStroke();
+    fill(0,150,150);
+    pushMatrix();
+    translate(location.x,location.y);
+    rotate(acceleration.heading());
+    ellipse(0,0,30,20);
+
+    popMatrix();
+  }
+   
+   
+ //Little Frog also moves and accelerates for a while and then stops repeatedly
+  void update(){
+   velocity.add(acceleration);
+   location.add(velocity);
+    if (abs(velocity.x)>3){
+    velocity.mult(0);
+   }
+  
+}
+
+void checkEdges(){
+    if (location.x > width-100) {
+      location.x = width-100;
+      velocity.x *= -1;
+      acceleration.x *= -1;
+      velocity.y *= -1;
+      acceleration.y *= -1;
+
+    } else if (location.x <100) {
+      location.x = 100;
+      velocity.x *= -1;
+      acceleration.x *= -1;
+
+    }
+
+    if (location.y > height-100) {
+      location.y = height- 100;
+      velocity.y *= -1;
+      acceleration.y *= -1;
+  
+    } else if (location.y < 100) {
+      location.y =100;
+      velocity.y *= -1;
+      acceleration.y *= -1;
+
+    }
+  }
+}
+
+//the light moves with the mouse
+class Light{
+float x;
+float y;
+ Light(float x_, float y_){ 
+x=x_;
+y=y_;
+  
+}
+void display(){
+  x=mouseX;
+  y=mouseY;
+  fill(250,250,210);
+  ellipse(x,y,100,100);
+}
+
 }
