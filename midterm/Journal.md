@@ -6,13 +6,13 @@ I try to set up the lifespan and let the tadpoles disappear after a certain peri
 <img src="Screenshot01.png" width="400">
 
 ## 3.2
-Adding the Arriving function to the tadpoles. Now Frogs do not attract the tadpoles, the tadpoles seek the frogs instead.
+Adding the Arriving function to the tadpoles. Now Frogs do not attract the tadpoles, the tadpoles seek the frogs instead. It is a big work to change attract into arrive because it is a work based on my previous work, so I have to have a clear sense of which part of the code is realizing the functions. 
 
 ## 3.3
 Adding the flocking to the tadpoles. Tadpoles will leave away from each other if they come too close.
 
 ## 3.8
-Manage to make the tadpoles die through the Professor's suggestions! I set a value called lifespan and makes it decrease overtime. Once it becomes 0, one tadpole is removed from the list.
+Manage to make the tadpoles die through the Professor's suggestions! I set a value called lifespan and makes it decrease overtime. Once it becomes 0, one tadpole is removed from the list. I also add one value called growLevel, which prepares for my future plan of letting tadpoles grow into little frogs. 
 
 ## 3.9
-Adding the sunlight and make the tadpoles grow into little frogs. Adding more algae to the pond. 
+Adding the sunlight and make the tadpoles grow into little frogs. Adding more algae to the pond. Adding the legend. 
