@@ -1,3 +1,3 @@
-[Course Summary](https://github.com/jiayiliang1222/RobotaPsyche/blob/main/25april/courseSummary.md)
-[Discussion Summary](https://github.com/jiayiliang1222/RobotaPsyche/blob/main/25april/discussionSummary.md)
-[Presentation Summary](https://github.com/jiayiliang1222/RobotaPsyche/blob/main/25april/presentationSummary.md)
+- [Course Summary](https://github.com/jiayiliang1222/RobotaPsyche/blob/main/25april/courseSummary.md)
+- [Discussion Summary](https://github.com/jiayiliang1222/RobotaPsyche/blob/main/25april/discussionSummary.md)
+- [Presentation Summary](https://github.com/jiayiliang1222/RobotaPsyche/blob/main/25april/presentationSummary.md)
